@@ -1,0 +1,30 @@
+#include "LedControl.h" 
+
+/*
+ Now we need a LedControl to work with.
+ ***** These pin numbers will probably not work with your hardware *****
+ pin 12 is connected to the DataIn 
+ pin 11 is connected to the CLK 
+ pin 10 is connected to LOAD 
+ We have only a single MAX72XX.
+ */
+
+LedControl lc=LedControl(12,11,10,1);
+
+// подключаем библиотеку DHT
+#include "DHT.h"
+#define DHTPIN 7     //контакт подключен к D7
+
+//Раскомментируйте в соответствии с используемым датчиком
+#define DHTTYPE DHT11   // DHT 11 
+//#define DHTTYPE DHT22   // DHT 22  (AM2302)
+//#define DHTTYPE DHT21   // DHT 21 (AM2301)
+
+// подключение датчика DHT11:
+// Connect pin 1 (on the left) of the sensor to +5V
+// Connect pin 2 of the sensor to whatever your DHTPIN is
+// Connect pin 4 (on the right) of the sensor to GROUND
+// Connect a 10K resistor from pin 2 (data) to pin 1 (power) of the sensor
+
+// Инициируем датчик пины и тип
+DHT dht(DHTPIN, DHTTYPE);
